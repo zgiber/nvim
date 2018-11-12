@@ -6,7 +6,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 " On-demand loading
-Plug 'ajh17/VimCompletesMe',
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter',
@@ -16,7 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'fatih/vim-go',
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -25,8 +24,9 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'easymotion/vim-easymotion'
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 Plug 'google/protobuf'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Initialize plugin system
 call plug#end()
@@ -50,7 +50,29 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
 colorscheme molokai
 
-" fix delays
+" use <tab> for trigger completion and navigate next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" Use <Tab> and <S-Tab> for navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use <enter> to confirm complete
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+" Close preview window when completion is done.
+"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+" fix some delays
+set updatetime=100
 if ! has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape
@@ -80,7 +102,8 @@ let g:airline_theme = 'dark'
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_deadline = "4s"
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
 let g:go_metalinter_autosave = 1
 
 au FileType go nmap <leader>r <Plug>(go-run)
