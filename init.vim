@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
 Plug '/usr/local/opt/fzf'
