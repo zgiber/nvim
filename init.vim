@@ -45,6 +45,7 @@ set autoread
 set autowrite
 set fillchars=vert:\│
 set background=dark
+set cursorline
 let g:rehash256 = 1
 let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
