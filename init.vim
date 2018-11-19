@@ -27,6 +27,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/protobuf'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
 
 " Initialize plugin system
 call plug#end()
@@ -51,6 +53,13 @@ let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
 colorscheme molokai
+
+" DART stuff
+let dart_style_guide = 2
+let dart_format_on_save = 1
+let dart_html_in_string=v:true
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
+let g:lsc_auto_map = v:true " Use defaults
 
 " use <tab> for trigger completion and navigate next complete item
 function! s:check_back_space() abort
@@ -94,7 +103,10 @@ set guicursor+=i:blinkwait10
 set mouse=a
 
 " no more shift
-nnoremap ; :
+"nnoremap ; :
+"
+" insert semicolon at end of the line
+noremap ; A;<ESC>
 
 let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 let g:airline_powerline_fonts = 1
