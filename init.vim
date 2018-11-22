@@ -18,7 +18,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'rust-lang/rust.vim'
@@ -58,7 +58,7 @@ colorscheme molokai
 let dart_style_guide = 2
 let dart_format_on_save = 1
 let dart_html_in_string=v:true
-let g:lsc_server_commands = {'dart': 'dart_language_server'}
+let g:lsc_server_commands = {'dart': 'dart_language_server', 'python': 'pyls'}
 let g:lsc_auto_map = v:true " Use defaults
 
 " use <tab> for trigger completion and navigate next complete item
@@ -170,8 +170,8 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-" double esc to disable highlighting
-nnoremap <ESC><ESC> :noh<CR>
+" leader  esc to disable highlighting
+nnoremap <Leader><ESC> :noh<CR>
 
 " fzf instead of ctrlp
 nnoremap <C-p> :Files<CR>
@@ -213,6 +213,9 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" close fzf with esc
+autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
 " find stuff within files in project
 nnoremap <Leader>f<SPACE> :Find
