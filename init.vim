@@ -48,6 +48,7 @@ set autowrite
 set fillchars=vert:\│
 set background=dark
 set cursorline
+set scrolloff=99
 let g:rehash256 = 1
 let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -77,6 +78,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 " Close preview window when completion is done.
 "autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" popup for autocomplete 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -134,6 +136,8 @@ au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
+au FileType go nmap gp :GoDecls<CR>
+
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -148,9 +152,9 @@ nnoremap <C-h> <C-w>h<ESC>
 nnoremap <C-l> <C-w>l<ESC>
 nnoremap <C-j> <C-w>j<ESC>
 nnoremap <C-k> <C-w>k<ESC>
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+
+" go alternate
+autocmd Filetype go nnoremap <leader>a :GoAlternate<CR>
 
 " easymotion basic
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
