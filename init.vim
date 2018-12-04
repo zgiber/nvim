@@ -29,6 +29,7 @@ Plug 'google/protobuf'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
+Plug 'maksimr/vim-jsbeautify'
 
 " Initialize plugin system
 call plug#end()
@@ -195,6 +196,20 @@ let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_layout = { 'window': '10split enew' }
+
+" Prettify a few file formats
+".vimrc
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
