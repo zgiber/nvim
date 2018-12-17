@@ -113,6 +113,8 @@ set mouse=a
 " insert semicolon at end of the line
 noremap ; A;<ESC>
 
+autocmd FileType c,cpp,java,php,proto,python autocmd BufWritePre <buffer> %s/\s\+$//e
+
 let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
