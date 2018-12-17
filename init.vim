@@ -26,10 +26,12 @@ Plug 'racer-rust/vim-racer'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/protobuf'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}} " language server client
+"Plug 'natebosch/vim-lsc' " language server client
+"Plug 'w0rp/ale' " language server client
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'natebosch/vim-lsc'
 Plug 'maksimr/vim-jsbeautify'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Initialize plugin system
 call plug#end()
@@ -60,8 +62,8 @@ colorscheme molokai
 let dart_style_guide = 2
 let dart_format_on_save = 1
 let dart_html_in_string=v:true
-let g:lsc_server_commands = {'dart': 'dart_language_server', 'python': 'pyls'}
-let g:lsc_auto_map = v:true " Use defaults
+"let g:lsc_server_commands = {'dart': 'dart_language_server', 'python': 'pyls'}
+"let g:lsc_auto_map = v:true " Use defaults
 
 " use <tab> for trigger completion and navigate next complete item
 function! s:check_back_space() abort
