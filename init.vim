@@ -26,12 +26,12 @@ Plug 'racer-rust/vim-racer'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/protobuf'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}} " language server client
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 "Plug 'natebosch/vim-lsc' " language server client
 "Plug 'w0rp/ale' " language server client
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 
 " Initialize plugin system
 call plug#end()
@@ -81,13 +81,13 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 " Close preview window when completion is done.
-"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " popup for autocomplete 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+	  \ pumvisible() ? "\<C-n>" :
+	  \ <SID>check_back_space() ? "\<TAB>" :
+	  \ coc#refresh()
 
 " fix some delays
 set updatetime=100
@@ -116,6 +116,8 @@ set mouse=a
 noremap ; A;<ESC>
 
 autocmd FileType c,cpp,java,php,proto,python autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd BufNewFile,BufRead BUILD set syntax=python
+autocmd BufNewFile,BufRead BUILD set ts=8 sts=4 et sw=4
 
 let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 let g:airline_powerline_fonts = 1
