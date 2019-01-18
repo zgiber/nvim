@@ -116,8 +116,7 @@ set mouse=a
 noremap ; A;<ESC>
 
 autocmd FileType c,cpp,java,php,proto,python autocmd BufWritePre <buffer> %s/\s\+$//e
-autocmd BufNewFile,BufRead BUILD set syntax=python
-autocmd BufNewFile,BufRead BUILD set ts=8 sts=4 et sw=4
+autocmd BufNewFile,BufRead BUILD set syntax=python ts=8 sts=4 et sw=4
 
 let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 let g:airline_powerline_fonts = 1
