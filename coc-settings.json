@@ -5,7 +5,7 @@
             "filetypes": ["go"],
             "initializationOptions": {
                 "gocodeCompletionEnabled": true,
-                "diagnosticsEnabled": true,
+                "diagnosticsEnabled": false,
                 "lintTool": "golint"
             }
         },

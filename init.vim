@@ -60,7 +60,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
 colorscheme molokai
 "colorscheme solarized
-set cmdheight=2
 set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -117,7 +116,7 @@ augroup end
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -127,11 +126,11 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " DART stuff
 let dart_style_guide = 2
@@ -141,15 +140,15 @@ let dart_html_in_string=v:true
 "let g:lsc_auto_map = v:true " Use defaults
 
 " fix some delays
-set updatetime=200
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
+" set updatetime=300
+" if ! has('gui_running')
+"     set ttimeoutlen=10
+"     augroup FastEscape
+"         autocmd!
+"         au InsertEnter * set timeoutlen=0
+"         au InsertLeave * set timeoutlen=1000
+"     augroup END
+" endif
 
 " cursor things
 highlight Cursor guifg=white guibg=grey
@@ -254,9 +253,6 @@ let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_layout = { 'window': '10split enew' }
 
 " Prettify a few file formats
-".vimrc
-map <c-f> :call JsBeautify()<cr>
-" or
 autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for json
 autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
