@@ -14,10 +14,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
@@ -27,8 +27,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/protobuf'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-"Plug 'natebosch/vim-lsc' " language server client
-"Plug 'w0rp/ale' " language server client
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'maksimr/vim-jsbeautify'
 
@@ -80,7 +78,7 @@ endfunction
 " nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -139,17 +137,6 @@ let dart_html_in_string=v:true
 "let g:lsc_server_commands = {'dart': 'dart_language_server', 'python': 'pyls', 'go':'go-langserver'}
 "let g:lsc_auto_map = v:true " Use defaults
 
-" fix some delays
-" set updatetime=300
-" if ! has('gui_running')
-"     set ttimeoutlen=10
-"     augroup FastEscape
-"         autocmd!
-"         au InsertEnter * set timeoutlen=0
-"         au InsertLeave * set timeoutlen=1000
-"     augroup END
-" endif
-
 " cursor things
 highlight Cursor guifg=white guibg=grey
 highlight iCursor guifg=white guibg=steelblue
@@ -176,6 +163,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
 let g:go_metalinter_autosave = 1
+let g:go_def_mapping_enabled = 1
 
 
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -217,7 +205,7 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-"nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
@@ -309,7 +297,7 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
-"set completeopt+=longest
+" set completeopt+=longest
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 

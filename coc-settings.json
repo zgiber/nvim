@@ -1,17 +1,9 @@
 {
     "languageserver": {
         "golang": {
-            "command": "go-langserver",
-            "filetypes": ["go"],
-            "initializationOptions": {
-                "gocodeCompletionEnabled": true,
-                "diagnosticsEnabled": false,
-                "lintTool": "golint"
-            }
-        },
-        "BUILD": {
-            "command": "build_langserver",
-            "filetypes": ["BUILD"]
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"]
         }
     }
 }
