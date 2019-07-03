@@ -4,6 +4,10 @@
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"]
+        },
+        "BUILD": {
+            "command": "build_langserver",
+            "filetypes": ["BUILD"]
         }
     }
 }
