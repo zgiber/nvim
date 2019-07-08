@@ -4,6 +4,18 @@
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"]
+        },
+        "dart": {
+            "command": "dart_language_server", // in windows is dart_language_server.bat
+            "args": [],
+            "filetypes": ["dart"],
+            "initializationOptions": {},
+            "settings": {
+                "dart": {
+                    "validation": {},
+                    "completion": {}
+                }
+            }
         }
     }
 }
