@@ -1,2 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/zoltan/dev/go/src/core3/vault/infrastructure/generate/k8s'
+let g:netrw_dirhist_2='/home/zoltan/dev/go/src/core3/instances/skyfall/k8s'
+let g:netrw_dirhist_3='/home/zoltan/dev/go/src/core3/vault/infrastructure/generate/k8s'
+let g:netrw_dirhist_4='/home/zoltan/dev/go/src/core3/vault/kernel/core_api/loadtest'
+let g:netrw_dirhist_5='/home/zoltan/dev/go/src/core3/vault/infrastructure/generate/k8s/local'

@@ -55,7 +55,7 @@ set termguicolors
 let g:rehash256 = 1
 let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-hi Search cterm=NONE ctermfg=grey ctermbg=blue
+" hi Search cterm=NONE ctermfg=grey ctermbg=blue
 colorscheme molokai
 "colorscheme solarized
 set signcolumn=yes
@@ -95,7 +95,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -138,12 +138,12 @@ let dart_html_in_string=v:true
 "let g:lsc_auto_map = v:true " Use defaults
 
 " cursor things
-highlight Cursor guifg=white guibg=grey
-highlight iCursor guifg=white guibg=steelblue
-set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
-set guicursor+=n-v-c:blinkon0
-set guicursor+=i:blinkwait10
+" highlight Cursor guifg=white guibg=grey
+" highlight iCursor guifg=white guibg=steelblue
+" set guicursor=n-v-c:block-Cursor
+" set guicursor+=i:ver100-iCursor
+" set guicursor+=n-v-c:blinkon0
+" set guicursor+=i:blinkwait10
 set mouse=a
 
 " insert semicolon at end of the line
@@ -153,7 +153,7 @@ autocmd FileType c,cpp,java,php,proto,python autocmd BufWritePre <buffer> %s/\s\
 autocmd BufNewFile,BufRead BUILD set syntax=python ts=8 sts=4 et sw=4
 
 let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme = 'dark'
@@ -326,3 +326,4 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+
