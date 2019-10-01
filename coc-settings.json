@@ -1,10 +1,10 @@
 {
     "languageserver": {
-		"please": {
-			"command": "plz",
-			"args": ["tool","lps"],
-			"filetypes": ["please"]
-		},
+        "please": {
+            "command": "plz",
+            "args": ["tool", "lps"],
+            "filetypes": ["please"]
+        },
         "golang": {
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
@@ -35,6 +35,14 @@
                 "python"
             ],
             "settings": {
+                "setInterpreter":"/opt/tm/tools/python/current/usr/bin/python",
+                "autoComplete.extraPaths": [
+                    "/home/zoltan/dev/go/src/core3/plz-out/gen",
+                    "/home/zoltan/dev/go/src/core3/plz-out/gen/third_party/python3",
+                    "/home/zoltan/dev/go/src/core3",
+                    "/home/zoltan/dev/go/src/core3/third_party/python3",
+                    "/opt/tm/tools/python/current/usr/lib/python3.6"
+                ],
                 "pyls": {
                     "enable": true,
                     "trace": {
