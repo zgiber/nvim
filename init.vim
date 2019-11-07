@@ -47,7 +47,7 @@ set autoread
 set autowrite
 set fillchars=vert:\│
 set listchars=tab:\│\ 
-set list
+" set list
 set background=dark
 set cursorline
 set scrolloff=99
