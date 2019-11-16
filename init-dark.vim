@@ -29,7 +29,6 @@ Plug 'google/protobuf'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
@@ -41,28 +40,25 @@ set nowrap
 set tabstop=4
 set shiftwidth=4
 set hidden
-" set number
-" set rnu
+set number
+set rnu
 set ignorecase
 set autoread
 set autowrite
 set fillchars=vert:\│
 set listchars=tab:\│\ 
 " set list
+set background=dark
 set cursorline
 set scrolloff=99
 set termguicolors
 let g:rehash256 = 1
-" let g:molokai_original = 1
+let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " hi Search cterm=NONE ctermfg=grey ctermbg=blue
-" colorscheme molokai
-" colorscheme github
-" colorscheme solarized
-colorscheme tangox
-set background=light
+colorscheme molokai
+"colorscheme solarized
 set signcolumn=yes
-hi NonText guifg=bg
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -160,7 +156,7 @@ let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 " let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'dark'
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
