@@ -17,7 +17,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
-Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -30,6 +29,7 @@ Plug 'google/protobuf'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'maksimr/vim-jsbeautify'
+Plug 'majutsushi/tagbar'
 
 " Initialize plugin system
 call plug#end()
@@ -41,7 +41,7 @@ set nowrap
 set tabstop=4
 set shiftwidth=4
 set hidden
-set number
+" set number
 " set rnu
 set ignorecase
 set autoread
@@ -49,16 +49,18 @@ set autowrite
 set fillchars=vert:\│
 set listchars=tab:\│\ 
 " set list
-set background=light
 set cursorline
 set scrolloff=99
 set termguicolors
 let g:rehash256 = 1
-let g:molokai_original = 1
+" let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " hi Search cterm=NONE ctermfg=grey ctermbg=blue
-colorscheme molokai
-" colorscheme Atelier_DuneLight
+" colorscheme molokai
+" colorscheme github
+" colorscheme solarized
+colorscheme tangox
+set background=light
 set signcolumn=yes
 set splitbelow
 hi NonText guifg=bg
@@ -156,11 +158,10 @@ autocmd FileType c,cpp,java,php,proto,python autocmd BufWritePre <buffer> %s/\s\
 autocmd BufNewFile,BufRead BUILD set syntax=python ts=8 sts=4 et sw=4
 
 let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline_theme = 'solarized'
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'solarized'
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
