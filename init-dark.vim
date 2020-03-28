@@ -17,7 +17,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar' " doesn't like macos + gotags
+Plug 'zgiber/tagbar'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -42,13 +43,11 @@ set tabstop=4
 set shiftwidth=4
 set hidden
 set number
-" set rnu
 set ignorecase
 set autoread
 set autowrite
 set fillchars=vert:\│
 set listchars=tab:\│\ 
-" set list
 set background=light
 set cursorline
 set scrolloff=99
@@ -56,12 +55,11 @@ set termguicolors
 let g:rehash256 = 1
 let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" hi Search cterm=NONE ctermfg=grey ctermbg=blue
 colorscheme molokai
-" colorscheme Atelier_DuneLight
 set signcolumn=yes
 set splitbelow
 hi NonText guifg=bg
+set mouse=a
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -75,10 +73,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use `[c` and `]c` for navigate diagnostics
-" nmap <silent> [c <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -98,7 +92,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -116,38 +110,17 @@ augroup mygroup
 augroup end
 
 " Using CocList
-" Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " DART stuff
 let dart_style_guide = 2
 let dart_format_on_save = 1
 let dart_html_in_string=v:true
-"let g:lsc_server_commands = {'dart': 'dart_language_server', 'python': 'pyls', 'go':'go-langserver'}
-"let g:lsc_auto_map = v:true " Use defaults
-
-" cursor things
-" highlight Cursor guifg=white guibg=grey
-" highlight iCursor guifg=white guibg=steelblue
-" set guicursor=n-v-c:block-Cursor
-" set guicursor+=i:ver100-iCursor
-" set guicursor+=n-v-c:blinkon0
-" set guicursor+=i:blinkwait10
-set mouse=a
 
 " insert semicolon at end of the line
 noremap ; A;<ESC>
@@ -159,15 +132,11 @@ let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline_theme = 'solarized'
 let g:airline_theme = 'molokai'
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-let g:go_metalinter_deadline = "5s"
-let g:go_metalinter_autosave = 1
 let g:go_def_mapping_enabled = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'gosimple', 'unused', 'misspell', 'gosec', 'ineffassign', 'staticcheck', 'structcheck']
 
 
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -183,8 +152,8 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
-
 au FileType go nmap gp :GoDecls<CR>
+au FileType go nmap <Leader>l :GoMetaLinter<CR>
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -192,6 +161,34 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:tagbar_ctags_bin = '/Users/zoltan/go/bin/gotags'
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : '/Users/zoltan/go/bin/gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 
 map <SPACE> <Leader>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
