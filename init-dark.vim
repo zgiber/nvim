@@ -53,7 +53,7 @@ set cursorline
 set scrolloff=99
 set termguicolors
 let g:rehash256 = 1
-let g:molokai_original = 1
+" let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=light
 colorscheme kalisi
@@ -93,12 +93,14 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" jump to next error
 nmap <silent> <F8> <Plug>(coc-diagnostic-next)
+
+" jump to previous error
 nmap <silent> <F7> <Plug>(coc-diagnostic-prev)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
 function! s:show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
@@ -154,7 +156,6 @@ let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'gosimple', 'unused', 'misspell', 'gosec', 'ineffassign', 'staticcheck', 'structcheck']
 let g:go_rename_command = 'gopls'
-
 
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
