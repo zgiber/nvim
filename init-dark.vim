@@ -7,6 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " On-demand loading
 Plug 'flazz/vim-colorschemes'
+Plug 'freeo/vim-kalisi'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter',
 Plug 'tpope/vim-fugitive',
@@ -17,8 +18,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
-" Plug 'majutsushi/tagbar' " doesn't like macos + gotags
-Plug 'zgiber/tagbar'
+Plug 'majutsushi/tagbar' " doesn't like macos + gotags
+" Plug 'zgiber/tagbar'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -48,18 +49,30 @@ set autoread
 set autowrite
 set fillchars=vert:\│
 set listchars=tab:\│\ 
-set background=light
 set cursorline
 set scrolloff=99
 set termguicolors
 let g:rehash256 = 1
 let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme molokai
+set background=light
+colorscheme kalisi
 set signcolumn=yes
 set splitbelow
 hi NonText guifg=bg
 set mouse=a
+
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -79,6 +92,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> <F8> <Plug>(coc-diagnostic-next)
+nmap <silent> <F7> <Plug>(coc-diagnostic-prev)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -137,6 +153,7 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode', 'gosimple', 'unused', 'misspell', 'gosec', 'ineffassign', 'staticcheck', 'structcheck']
+let g:go_rename_command = 'gopls'
 
 
 au FileType go nmap <leader>r <Plug>(go-run)
