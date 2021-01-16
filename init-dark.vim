@@ -6,8 +6,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 " On-demand loading
-Plug 'flazz/vim-colorschemes'
-Plug 'freeo/vim-kalisi'
+" Plug 'flazz/vim-colorschemes'
+Plug 'cormacrelf/vim-colors-github'
+" Plug 'freeo/vim-kalisi'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter',
 Plug 'tpope/vim-fugitive',
@@ -56,7 +57,9 @@ let g:rehash256 = 1
 " let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=light
-colorscheme kalisi
+colorscheme github
+let g:airline_theme = 'github'
+let g:lightline = { 'colorscheme': 'github' }
 set signcolumn=yes
 set splitbelow
 hi NonText guifg=bg
@@ -118,6 +121,9 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Shorthand for rendering swagger UI in browser
+command -nargs=0 SwaggerUI :CocCommand swagger.render
 
 augroup mygroup
   autocmd!
