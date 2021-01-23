@@ -1,4 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/zoltan/Downloads/AIB GB_report_AIS_retialGB_3.1.6_2021-01-18T16_49_24+00_00'
+let g:netrw_dirhist_0='/home/zoltan/Desktop/Notes'
+let g:netrw_dirhist_9='/home/zoltan/dev/tgen'
+let g:netrw_dirhist_8='/home/zoltan/dev/tgen/api'
+let g:netrw_dirhist_7='/home/zoltan/dev/tgen'
+let g:netrw_dirhist_6='/home/zoltan/dev/playground/base64'
+let g:netrw_dirhist_5='/home/zoltan/dev/msec-infra'
+let g:netrw_dirhist_4='/home/zoltan/dev'
+let g:netrw_dirhist_3='/home/zoltan'
 let g:netrw_dirhist_2='/home/zoltan/dev/mambasec/project/docs'
-let g:netrw_dirhist_1='/home/zoltan/dev/tgenroll/proto'

@@ -19,8 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'buoto/gotests-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
-Plug 'majutsushi/tagbar' " doesn't like macos + gotags
-" Plug 'zgiber/tagbar'
+Plug 'preservim/tagbar'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -57,13 +56,14 @@ let g:rehash256 = 1
 " let g:molokai_original = 1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=light
-colorscheme github
-let g:airline_theme = 'github'
-let g:lightline = { 'colorscheme': 'github' }
 set signcolumn=yes
 set splitbelow
 hi NonText guifg=bg
 set mouse=a
+colorscheme github
+let g:lightline = { 'colorscheme': 'github' }
+let g:gitgutter_enabled = 1
+set updatetime=500
 
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
@@ -102,6 +102,7 @@ nmap <silent> <F8> <Plug>(coc-diagnostic-next)
 " jump to previous error
 nmap <silent> <F7> <Plug>(coc-diagnostic-prev)
 
+nmap <F10> :TagbarToggle<CR>
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -156,7 +157,7 @@ let g:racer_cmd = "/Users/zgiber/.cargo/bin/racer"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'github'
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled = 1
@@ -185,33 +186,32 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:tagbar_ctags_bin = '/Users/zoltan/go/bin/gotags'
 let g:tagbar_type_go = {
-	\ 'ctagstype' : 'go',
-	\ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	\ ],
-	\ 'sro' : '.',
-	\ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	\ },
-	\ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	\ },
-	\ 'ctagsbin'  : '/Users/zoltan/go/bin/gotags',
-	\ 'ctagsargs' : '-sort -silent'
+        \ 'ctagstype' : 'go',
+        \ 'kinds'     : [
+            \ 'p:package',
+            \ 'i:imports:1',
+            \ 'c:constants',
+            \ 'v:variables',
+            \ 't:types',
+            \ 'n:interfaces',
+            \ 'w:fields',
+            \ 'e:embedded',
+            \ 'm:methods',
+            \ 'r:constructor',
+            \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
 \ }
 
 map <SPACE> <Leader>
