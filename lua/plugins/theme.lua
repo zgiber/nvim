@@ -1,4 +1,17 @@
 -- return {
+--   "Mofiqul/vscode.nvim",
+--   config = function()
+--     local scheme = "vscode"
+--     vim.cmd.colorscheme(scheme)
+--
+--     if scheme == "vscode" then
+--       -- make the cursor line in fzf lua a bit more visible
+--       vim.cmd.highlight({ "FzfLuaCursorLine", "guibg=#333333" })
+--     end
+--   end,
+-- }
+
+-- return {
 --   {
 --     "projekt0n/github-nvim-theme",
 --     name = "github-theme",
@@ -15,7 +28,7 @@
 --         },
 --       })
 --
---       vim.cmd("colorscheme github_dark_dimmed")
+--       vim.cmd("colorscheme github_dark")
 --     end,
 --   },
 -- }
@@ -78,7 +91,7 @@ return {
         ------@param hp Helper
         ---override = function(cs: Colorscheme, p: ColorschemeOptions, Config: MonokaiProOptions, hp: Helper) end,
       })
-      vim.cmd("colorscheme monokai-pro-ristretto")
+      vim.cmd("colorscheme monokai-pro")
     end,
   },
 }
