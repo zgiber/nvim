@@ -7,7 +7,7 @@ local t_opts = { silent = true }
 local keymap = vim.keymap.set
 
 -- Terminal mode
-keymap("t", "<esc>", "<C-\\><C-N>", t_opts)
+keymap("t", "<esc><esc>", "<C-\\><C-N>", t_opts)
 keymap("t", "<C-Left>", "<C-\\><C-N><C-w>h", t_opts)
 keymap("t", "<C-Down>", "<C-\\><C-N><C-w>j", t_opts)
 keymap("t", "<C-Up>", "<C-\\><C-N><C-w>k", t_opts)

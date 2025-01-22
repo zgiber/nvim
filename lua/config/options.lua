@@ -50,6 +50,8 @@
 -- vim.g.trouble_lualine = true
 --
 local opt = vim.opt
+opt.guifont = "Hack Nerd Font Mono:h12"
+
 --
 -- opt.autowrite = true -- Enable auto write
 -- -- only set clipboard if not in ssh, to make sure the OSC 52
