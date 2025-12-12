@@ -12,3 +12,4 @@
 -- keymap("t", "<C-Down>", "<C-\\><C-N><C-w>j", t_opts)
 -- keymap("t", "<C-Up>", "<C-\\><C-N><C-w>k", t_opts)
 -- keymap("t", "<C-Right>", "<C-\\><C-N><C-w>l", t_opts)
+vim.keymap.set("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Git blame line" })
