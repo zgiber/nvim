@@ -1,4 +1,27 @@
 return {
+  -- Disable autocomplete documentation popup
+  {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        documentation = {
+          auto_show = false,
+        },
+      },
+    },
+  },
+
+  -- Formatter for starlark/bazel files
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        starlark = { "buildifier" },
+        bzl = { "buildifier" },
+      },
+    },
+  },
+
   -- Disable golangci-lint LSP
   -- Configure staticcheck in gopls to ignore ST1000/ST1003
   -- Disable inlay hints
@@ -21,11 +44,14 @@ return {
                 compositeLiteralTypes = false,
                 constantValues = false,
                 functionTypeParameters = false,
-                parameterNames = true,
+                parameterNames = false,
                 rangeVariableTypes = false,
               },
             },
           },
+        },
+        starpls = {
+          filetypes = { "starlark", "bzl" },
         },
       },
     },
