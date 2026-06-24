@@ -1,4 +1,16 @@
 return {
+  -- Disable autocomplete documentation popup
+  {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        documentation = {
+          auto_show = false,
+        },
+      },
+    },
+  },
+
   -- Disable golangci-lint LSP
   -- Configure staticcheck in gopls to ignore ST1000/ST1003
   -- Disable inlay hints
