@@ -52,6 +52,21 @@
 local opt = vim.opt
 opt.guifont = "Hack Nerd Font Mono:h12"
 
+-- Neovide GUI tuning (ignored when running in a terminal)
+if vim.g.neovide then
+  vim.g.neovide_position_animation_length = 0.13
+  vim.g.neovide_scroll_animation_length = 0.20
+  vim.g.neovide_cursor_animation_length = 0.06
+  vim.g.neovide_cursor_trail_size = 0.6
+  vim.g.neovide_cursor_smooth_blink = true
+  vim.g.neovide_refresh_rate = 60 -- raise to match your monitor (e.g. 120/144)
+  vim.g.neovide_refresh_rate_idle = 5 -- low refresh when idle, saves power
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_floating_blur_amount_x = 2.0
+  vim.g.neovide_floating_blur_amount_y = 2.0
+  -- vim.g.neovide_transparency = 0.95 -- uncomment for a translucent window
+end
+
 --
 -- opt.autowrite = true -- Enable auto write
 -- -- only set clipboard if not in ssh, to make sure the OSC 52
