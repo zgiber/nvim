@@ -50,7 +50,7 @@
 -- vim.g.trouble_lualine = true
 --
 local opt = vim.opt
-opt.guifont = "Hack Nerd Font Mono:h12"
+opt.guifont = "JetBrainsMono Nerd Font:h12"
 
 --
 -- opt.autowrite = true -- Enable auto write
